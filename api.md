@@ -43,12 +43,12 @@ This endpoint will allow a user to add a new recipe or update an existing recipe
 This endpoint accepts a `NewRecipe` object and stores it in the database. It then returns the
 identifier of the inserted recipe.
 
-### `update` - `POST`
+### `update` - `PUT`
 
 This endpoint accepts a `Recipe` object. It updates the record in the database and returns a
 status.
 
-### `delete` - `POST`
+### `delete` - `DELETE`
 
 This endpoint accepts a `uuid`. It deletes the record in the database matching that identifier.
 
