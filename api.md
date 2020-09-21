@@ -24,7 +24,7 @@ This endpoint accepts a `string` for the search. It then returns a paginated lis
 * `author` - `string`
 * `image` - `string` - base64 string
 * `description` - `string` - optional description of recipe
-* `id` - `string | integer` - document identifier for quick lookup
+* `id` - `uuid` - document identifier for quick lookup
 
 ## Load
 
@@ -32,7 +32,31 @@ This endpoint will allow a user to load a recipe based on the recipe's identifie
 
 ### `load` - `GET`
 
-This endpoint accepts a `string | integer`. It then returns an object that contains the following:
+This endpoint accepts a `uuid`. It then returns a `Recipe`.
+
+## Save and Update
+
+This endpoint will allow a user to add a new recipe or update an existing recipe.
+
+### `insert` - `POST`
+
+This endpoint accepts a `NewRecipe` object and stores it in the database. It then returns the
+identifier of the inserted recipe.
+
+### `update` - `POST`
+
+This endpoint accepts a `Recipe` object. It updates the record in the database and returns a
+status.
+
+### `delete` - `POST`
+
+This endpoint accepts a `uuid`. It deletes the record in the database matching that identifier.
+
+## Models
+
+### `NewRecipe`
+
+A `NewRecipe` model will be defined as follows:
 
 * `title` - `string`
 * `author` - `string`
@@ -43,10 +67,8 @@ This endpoint accepts a `string | integer`. It then returns an object that conta
 * `description` - `string` - optional description of recipe
 * `url` - `string` - optional URL where original recipe can be located
 
-## Save and Update
+### `Recipe`
 
-This endpoint will allow a user to add a new recipe or update an existing recipe.
+A `Recipe` model will extend a `NewRecipe`, adding the following property:
 
-### `save` - `POST`
-
-### `update` - `POST` 
+* `id` - `uuid`
