@@ -5,11 +5,20 @@ endpoints, the HTTP method used to access them, a description of what they accep
 
 ## Authentication
 
-Initially, authentication will be accomplished via OAuth. It will use passport.js to accomplish this.
+Long-term, authentication will be accomplished via OAuth. However, beginning authentication will be handled
+with username and password to allow more simple development. Both authentication types will rely on
+passport.js.
 
 ### `/login` - `POST`
 
+Short-term: Will use passport local strategy. This will require properties `username` and `password in the body
+of the `POST` request.
+
+Long-term: Will use passport GMail strategy, and possibly a few others.
+
 ### `/logout` - `POST`
+
+TBD
 
 ## Search
 
