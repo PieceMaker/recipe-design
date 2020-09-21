@@ -18,13 +18,7 @@ keywords in the stored recipes.
 
 ### `search` - `GET`
 
-This endpoint accepts a `string` for the search. It then returns a paginated list containing the following properties:
-
-* `title` - `string`
-* `author` - `string`
-* `image` - `string` - base64 string
-* `description` - `string` - optional description of recipe
-* `id` - `uuid` - document identifier for quick lookup
+This endpoint accepts a `string` for the search. It then returns a paginated `SummaryRecipe[]`.
 
 ## Load
 
@@ -54,17 +48,20 @@ This endpoint accepts a `uuid`. It deletes the record in the database matching t
 
 ## Models
 
+### `BaseRecipe`
+
+* `title` - `string`
+* `author` - `string`
+* `image` - `string` - base64 string
+* `description` - `string` - optional description of recipe
+
 ### `NewRecipe`
 
 A `NewRecipe` model will be defined as follows:
 
-* `title` - `string`
-* `author` - `string`
 * `published` - `date`
 * `recipe` - `string` - full recipe as markdown
 * `updated` - `date` - optional
-* `image` - `string` - optional base64 string
-* `description` - `string` - optional description of recipe
 * `url` - `string` - optional URL where original recipe can be located
 
 ### `Recipe`
@@ -72,3 +69,9 @@ A `NewRecipe` model will be defined as follows:
 A `Recipe` model will extend a `NewRecipe`, adding the following property:
 
 * `id` - `uuid`
+
+### `SummaryRecipe`
+
+A `SummaryRecipe` model extends a `BaseRecipe`, adding the following property:
+
+* `id` - `uuid` - document identifier for quick lookup
