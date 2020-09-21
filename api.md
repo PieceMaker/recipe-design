@@ -7,44 +7,53 @@ endpoints, the HTTP method used to access them, a description of what they accep
 
 Initially, authentication will be accomplished via OAuth. It will use passport.js to accomplish this.
 
-### `login` - `POST`
+### `/login` - `POST`
 
-### `logout` - `POST`
+### `/logout` - `POST`
 
 ## Search
 
 Like any good website, there should be search functionality. This will take the search term and compare it with various
 keywords in the stored recipes.
 
-### `search` - `GET`
+### `/search/{pattern}/{page?}` - `GET`
 
-This endpoint accepts a `string` for the search. It then returns a paginated `SummaryRecipe[]`.
+* `pattern` - `string`
+* `page` - `integer` - optional
+
+Returns a paginated `SummaryRecipe[]`. If `page` is not specified, defaults to `page = 1`.
 
 ## Load
 
 This endpoint will allow a user to load a recipe based on the recipe's identifier.
 
-### `load` - `GET`
+### `/load/{id}` - `GET`
 
-This endpoint accepts a `uuid`. It then returns a `Recipe`.
+* `id` - `uuid` - Identifier of the document to load.
 
-## Save and Update
+Returns a `Recipe`.
+
+## Write
 
 This endpoint will allow a user to add a new recipe or update an existing recipe.
 
-### `insert` - `POST`
+### `/insert` - `POST`
 
-This endpoint accepts a `NewRecipe` object and stores it in the database. It then returns the
-identifier of the inserted recipe.
+Accepts a `NewRecipe` object and stores it in the database. It then returns the identifier
+of the inserted recipe.
 
-### `update` - `PUT`
+### `/update/{id}` - `PUT`
+
+* `id` - `uuid` - Identifier of the document to update.
 
 This endpoint accepts a `Recipe` object. It updates the record in the database and returns a
 status.
 
-### `delete` - `DELETE`
+### `/delete/{id}` - `DELETE`
 
-This endpoint accepts a `uuid`. It deletes the record in the database matching that identifier.
+* `id` - `uuid` - Identifier of the document to update
+
+Deletes the record in the database matching that identifier.
 
 ## Models
 
