@@ -75,7 +75,7 @@ Deletes the record in the database matching that identifier.
 
 ### `NewRecipe`
 
-A `NewRecipe` model will be defined as follows:
+A `NewRecipe` model will extend a `BaseRecipe`, adding the following properties:
 
 * `published` - `date`
 * `recipe` - `string` - full recipe as markdown
