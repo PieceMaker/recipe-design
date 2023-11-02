@@ -70,7 +70,7 @@ Deletes the record in the database matching that identifier.
 
 * `title` - `string`
 * `author` - `string`
-* `image` - `string` - base64 string
+* `image` - `string` - optional base64 string
 * `description` - `string` - optional description of recipe
 
 ### `NewRecipe`
